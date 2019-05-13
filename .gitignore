@@ -1,0 +1,22 @@
+### Ignored Files, Folders
+colt-examples/
+
+### Virtual Environment
+.venv/
+
+### VS Code Settings
+.vscode/
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
