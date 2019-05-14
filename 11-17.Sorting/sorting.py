@@ -27,3 +27,19 @@ def selection_sort(arr):
         arr[ind], arr[i] = arr[i], arr[ind]
 
     return arr
+
+
+def insertion_sort(arr):
+    # 1. Loop from the first element (if empty array, returns empty array directly)
+    for i in range(1, len(arr)):
+        # 2. Save the current element
+        current = arr[i]
+        # 3. Take the portion of array on the current element's left,
+        # and loop the portion in descending order
+        j = i-1
+        while j >= 0 and arr[j] > current:
+            # Shift the elements that are larger than the current to the right
+            arr[j+1] = arr[j]
+            j = j-1
+        arr[j+1] = current  # put current value in the empty slot
+    return arr
