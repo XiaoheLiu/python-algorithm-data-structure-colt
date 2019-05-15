@@ -32,3 +32,9 @@ class TestSorting(unittest.TestCase):
         self.assertEqual(sorting.merge_sort(self.a1), self.a0)
         self.assertEqual(sorting.merge_sort(self.a2), self.a0)
         self.assertEqual(sorting.merge_sort([]), [])
+
+    def test_quick_sort(self):
+        self.assertEqual(sorting.quick_sort(self.a0), self.a0)
+        self.assertEqual(sorting.quick_sort(self.a1), self.a0)
+        self.assertEqual(sorting.quick_sort(self.a2), self.a0)
+        self.assertEqual(sorting.quick_sort([]), [])
