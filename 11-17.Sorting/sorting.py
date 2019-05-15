@@ -1,4 +1,4 @@
-from helper import min_index
+from helper import min_index, merge
 
 
 def bubble_sort(arr):
@@ -43,3 +43,19 @@ def insertion_sort(arr):
             j = j-1
         arr[j+1] = current  # put current value in the empty slot
     return arr
+
+
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    middle_index = len(arr)//2
+
+    # Merge sort the left and right halves recursively
+    left = merge_sort(arr[:middle_index])
+    right = merge_sort(arr[middle_index:])
+
+    return merge(left, right)
+
+
+print(merge_sort([1, 2]))
