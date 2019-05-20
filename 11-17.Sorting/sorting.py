@@ -1,4 +1,4 @@
-from helper import min_index, merge
+from helper import min_index, merge, pivot
 
 
 def bubble_sort(arr):
@@ -58,4 +58,16 @@ def merge_sort(arr):
     return merge(left, right)
 
 
-print(merge_sort([1, 2]))
+def quick_sort(arr):
+    quick_sort_wrapper(arr, left=0, right=len(arr)-1)
+    return arr
+
+
+def quick_sort_wrapper(arr, left, right):
+    """
+    Sort the partition of the array from left to right.
+    """
+    if left < right:
+        pivot_idx = pivot(arr, left, right)
+        quick_sort_wrapper(arr, left, pivot_idx-1)
+        quick_sort_wrapper(arr, pivot_idx+1, right)
