@@ -11,6 +11,9 @@ class Node:
 
         return f'{left} ({self.value}) {right}'
 
+    def __repr__(self):
+        return str(self.value)
+
 
 class BinarySearchTree:
     def __init__(self):
@@ -65,12 +68,97 @@ class BinarySearchTree:
 
         return current
 
+    def BFS(self):
+        """ Breadth first search """
+        queue = []
+        visited = []
+        node = self.root
+
+        queue.append(node)
+
+        while (len(queue) > 0):
+            node = queue.pop(0)
+            visited.append(node)
+
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+
+        return visited
+
+    def DFS_pre_order(self):
+        """ Depth first search - pre order """
+        visited = []
+
+        def traverse(node):
+            visited.append(node.value)
+
+            if node.left:
+                traverse(node.left)
+            if node.right:
+                traverse(node.right)
+
+        traverse(self.root)
+
+        return visited
+
+    def DFS_post_order(self):
+        """ Depth first search - post order """
+        visited = []
+
+        def traverse(node):
+            if node.left:
+                traverse(node.left)
+            if node.right:
+                traverse(node.right)
+
+            visited.append(node.value)
+
+        traverse(self.root)
+
+        return visited
+
+    def DFS_in_order(self):
+        """ Depth first search - in order """
+        visited = []
+
+        def traverse(node):
+            if node.left:
+                traverse(node.left)
+
+            visited.append(node.value)
+
+            if node.right:
+                traverse(node.right)
+
+        traverse(self.root)
+
+        return visited
+
 
 bst = BinarySearchTree()
 bst.insert(10)
 bst.insert(10)
 bst.insert(8)
 bst.insert(16)
+bst.insert(7)
+bst.insert(88)
+bst.insert(11)
+bst.insert(100)
+bst.insert(33)
+#       10
+#    8      16
+# 7      11      88
+#             33      100
 print(bst.root)
 print(bst.find(8))
 print(bst.find(9))
+print(bst.BFS())
+# [10, 8, 16, 7, 11, 88, 33, 100]
+print(bst.DFS_pre_order())
+# [10, 8, 7, 16, 11, 88, 33, 100]
+print(bst.DFS_post_order())
+# [7, 8, 11, 33, 100, 88, 16, 10]
+print(bst.DFS_in_order())
+# [7, 8, 10, 11, 16, 33, 88, 100]
